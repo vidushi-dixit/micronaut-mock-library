@@ -13,6 +13,6 @@ class Test() {
         return url
     }
     companion object {
-        const val PREFIX = ".auth-servers"
+        const val PREFIX = "micronaut.test"
     }
 }
