@@ -1,0 +1,32 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
+    id 'java-library'
+    id 'maven-publish'
+    id 'io.micronaut.library' version '3.1.0'
+}
+
+group 'org.mock'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.0"
+
+    implementation platform("io.micronaut:micronaut-bom:2.5.4")
+    // https://mvnrepository.com/artifact/javax.inject/javax.inject
+    api "io.micronaut:micronaut-inject-java"
+    api "com.fasterxml.jackson.module:jackson-module-kotlin:2.11.2"
+    annotationProcessor "io.micronaut:micronaut-inject-java"
+}
+
+publishing {
+    publications {
+        myLibrary(MavenPublication) {
+            from components.java
+            artifact kotlinSourcesJar
+        }
+    }
+}
